@@ -1,6 +1,7 @@
 :root {
   --navy: #0A143C;
-  --teal: #00B7B3;
+  /* Brightened turquoise to improve link visibility */
+  --teal: #00D2CF;
   --sand: #EFE7D8;
   --magenta: #FF1E8A;
 }
@@ -12,9 +13,56 @@ body {
   color: var(--sand);
 }
 
-header {
+/* Enabled smooth scrolling for better in-page navigation */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Added hero layout improvements for mobile spacing and hierarchy */
+.hero {
+  display: grid;
+  gap: 2rem;
+  padding: 60px 1.5rem 4rem;
+}
+
+/* Ensured hero content remains legible across breakpoints */
+.hero-content {
   text-align: center;
-  padding: 5rem 1rem;
+  display: grid;
+  gap: 1rem;
+}
+
+/* Added styling for the new hero subhead */
+.hero-subhead {
+  margin: 0 auto;
+  max-width: 28ch;
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  color: var(--sand);
+  text-transform: uppercase;
+}
+
+/* Introduced responsive hero media container with gradient overlay */
+.hero-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.hero-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Applied navy-to-transparent gradient overlay */
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 20, 60, 0.85) 0%, rgba(10, 20, 60, 0) 60%);
+  pointer-events: none;
 }
 
 h1 {
@@ -28,6 +76,10 @@ h2 {
   color: var(--teal);
 }
 
+.hero-content h1 {
+  margin-bottom: 0.5rem;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -35,8 +87,68 @@ h2 {
   padding: 1rem;
 }
 
+/* Added fade-in animation base state for sections */
+section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+/* Reveals sections when they enter the viewport */
+section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Updated link styles for brighter color and accessible hover state */
+a {
+  color: var(--teal);
+  text-decoration: none;
+  transition: color 200ms ease, text-decoration-color 200ms ease;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
 footer {
   text-align: center;
-  padding: 2rem;
+  /* Increased footer padding for better touch targets */
+  padding: 24px 1.5rem;
   border-top: 1px solid var(--teal);
+}
+
+/* Improved footer link styling and layout for mobile */
+footer p:last-of-type {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 1.25rem;
+}
+
+footer a {
+  color: var(--sand);
+}
+
+/* Enhanced layout on larger screens */
+@media (min-width: 768px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    padding: 80px 6vw 5rem;
+  }
+
+  .hero-content {
+    text-align: left;
+    align-items: start;
+  }
+
+  .hero-media {
+    min-height: 360px;
+  }
+
+  .hero-gradient {
+    background: linear-gradient(180deg, rgba(10, 20, 60, 0.7) 0%, rgba(10, 20, 60, 0) 70%);
+  }
 }
