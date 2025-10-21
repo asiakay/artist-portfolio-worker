@@ -1,17 +1,19 @@
-import { serveDir } from 'worktop/static';
-import { Router } from 'worktop';
 import * as ContactAPI from './api/contact.js';
 
-const API = new Router();
-
-API.add('POST', '/api/contact', ContactAPI.submit);
-
-API.add('GET', '*', async (req, res) => {
-  return serveDir(req, { onNotFound: () => new Response('Not found', { status: 404 }) });
-});
-
 export default {
-  async fetch(req, env, ctx) {
-    return API.run(req, env, ctx);
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+    if (url.pathname === '/api/contact' && request.method === 'POST') {
+      return ContactAPI.submit(request);
+    }
+
+    const assetResponse = await env.ASSETS.fetch(request);
+
+    if (assetResponse.status === 404) {
+      return new Response('Not found', { status: 404 });
+    }
+
+    return assetResponse;
   },
 };
