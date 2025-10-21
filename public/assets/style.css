@@ -59,6 +59,8 @@ body {
   display: grid;
   gap: clamp(2rem, 4vw, 4rem);
   justify-items: center;
+  /* Recenters the hero stack so it sits in the middle rather than hugging the left edge */
+  justify-content: center;
 }
 
 .hero-media {
