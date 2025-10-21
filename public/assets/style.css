@@ -1,106 +1,272 @@
 :root {
-  --navy: #0A143C;
-  /* Brightened turquoise to improve link visibility */
-  --teal: #00D2CF;
-  --sand: #EFE7D8;
-  --magenta: #FF1E8A;
+  --navy: #050c2f;
+  --navy-soft: rgba(12, 19, 55, 0.8);
+  --teal: #27f0ec;
+  --sand: #efe7d8;
+  --magenta: #ff3c9a;
+  --deep-purple: #1b1640;
+  --card-glass: rgba(255, 255, 255, 0.08);
+  --card-border: rgba(255, 255, 255, 0.14);
+  --shadow-soft: 0 30px 60px -30px rgba(0, 0, 0, 0.65);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
-  background: var(--navy);
+  background: radial-gradient(circle at 20% 20%, rgba(39, 240, 236, 0.12), transparent 45%),
+    radial-gradient(circle at 80% 10%, rgba(255, 60, 154, 0.1), transparent 50%),
+    var(--navy);
   color: var(--sand);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
 }
 
-/* Enabled smooth scrolling for better in-page navigation */
-html {
-  scroll-behavior: smooth;
+.background-texture {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(140deg, rgba(12, 19, 55, 0.8), rgba(5, 12, 47, 0.9)),
+    url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"%3E%3Cpath fill="%23ffffff" fill-opacity="0.05" d="M0 0h20v20H0zM40 40h20v20H40zM80 0h20v20H80zM120 40h20v20h-20z"/%3E%3C/svg%3E');
+  mix-blend-mode: screen;
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: -2;
 }
 
-/* Added hero layout improvements for mobile spacing and hierarchy */
-.hero {
-  display: grid;
-  gap: 2rem;
-  padding: 60px 1.5rem 4rem;
-}
-
-/* Ensured hero content remains legible across breakpoints */
-.hero-content {
-  text-align: center;
-  display: grid;
-  gap: 1rem;
-}
-
-/* Added styling for the new hero subhead */
-.hero-subhead {
+.container {
+  width: min(1080px, 100%);
   margin: 0 auto;
-  max-width: 28ch;
-  font-size: 1.2rem;
-  letter-spacing: 0.08em;
-  color: var(--sand);
-  text-transform: uppercase;
+  padding: 0 1.5rem;
 }
 
-/* Introduced responsive hero media container with gradient overlay */
+.hero {
+  padding: clamp(4rem, 6vw, 6rem) 0 4rem;
+  position: relative;
+}
+
+.hero-inner {
+  display: grid;
+  gap: clamp(2rem, 4vw, 4rem);
+}
+
 .hero-media {
   position: relative;
   overflow: hidden;
-  border-radius: 1.5rem;
-  background: rgba(255, 255, 255, 0.04);
+  border-radius: 1.75rem;
+  background: var(--deep-purple);
+  box-shadow: var(--shadow-soft);
 }
 
 .hero-media img {
   width: 100%;
-  height: auto;
   display: block;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.15);
 }
 
-/* Applied navy-to-transparent gradient overlay */
 .hero-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(10, 20, 60, 0.85) 0%, rgba(10, 20, 60, 0) 60%);
+  background: linear-gradient(200deg, rgba(5, 12, 47, 0) 20%, rgba(5, 12, 47, 0.8) 100%);
   pointer-events: none;
+}
+
+.hero-content {
+  display: grid;
+  gap: 1rem;
+  text-align: center;
+}
+
+.eyebrow {
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(239, 231, 216, 0.72);
+  font-size: 0.85rem;
+  margin: 0;
 }
 
 h1 {
   font-family: 'League Spartan', sans-serif;
   font-weight: 700;
-  color: var(--magenta);
+  font-size: clamp(2.25rem, 6vw, 3.75rem);
+  line-height: 1.05;
+  margin: 0;
+  color: var(--sand);
+  text-shadow: 0 20px 35px rgba(0, 0, 0, 0.45);
 }
 
-h2 {
-  font-family: 'League Spartan', sans-serif;
+.hero-subhead {
+  margin: 0 auto;
+  max-width: 42ch;
+  font-size: 1.1rem;
+  color: rgba(239, 231, 216, 0.82);
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.75rem;
+  border-radius: 999px;
+  background: var(--teal);
+  color: var(--deep-purple);
+  font-weight: 600;
+  border: none;
+  text-decoration: none;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+  box-shadow: 0 15px 35px -18px rgba(39, 240, 236, 0.8);
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 40px -18px rgba(39, 240, 236, 0.85);
+}
+
+.button--ghost {
+  background: transparent;
+  color: var(--sand);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: none;
+}
+
+.button--ghost:hover,
+.button--ghost:focus-visible {
+  border-color: var(--teal);
   color: var(--teal);
 }
 
-.hero-content h1 {
-  margin-bottom: 0.5rem;
-}
-
-.grid {
+main {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
+  gap: clamp(3.5rem, 6vw, 5rem);
+  padding-bottom: clamp(3rem, 8vw, 5rem);
 }
 
-/* Added fade-in animation base state for sections */
-section {
+.content-section {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(32px);
   transition: opacity 600ms ease, transform 600ms ease;
+  position: relative;
 }
 
-/* Reveals sections when they enter the viewport */
-section.is-visible {
+.content-section::before {
+  content: '';
+  position: absolute;
+  inset: 12% -20% -15% -20%;
+  background: radial-gradient(circle at top left, rgba(39, 240, 236, 0.12), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(255, 60, 154, 0.12), transparent 65%);
+  opacity: 0.65;
+  z-index: -1;
+  filter: blur(60px);
+}
+
+.content-section.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Updated link styles for brighter color and accessible hover state */
+.section-inner {
+  background: linear-gradient(160deg, rgba(27, 22, 64, 0.88), rgba(5, 12, 47, 0.9));
+  border: 1px solid var(--card-border);
+  border-radius: 1.5rem;
+  padding: clamp(2.5rem, 5vw, 3.5rem);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(18px);
+}
+
+.section-heading {
+  display: grid;
+  gap: 0.65rem;
+  margin-bottom: clamp(2rem, 4vw, 2.75rem);
+}
+
+h2 {
+  font-family: 'League Spartan', sans-serif;
+  font-size: clamp(1.9rem, 4vw, 2.5rem);
+  color: var(--teal);
+  margin: 0;
+}
+
+.section-heading p {
+  margin: 0;
+  max-width: 52ch;
+  color: rgba(239, 231, 216, 0.76);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.75rem;
+}
+
+.gallery-card {
+  display: grid;
+  gap: 0.85rem;
+  background: var(--card-glass);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 18px 40px -28px rgba(0, 0, 0, 0.75);
+}
+
+.gallery-card img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  filter: saturate(1.1) contrast(1.05);
+}
+
+.gallery-card figcaption {
+  padding: 1rem 1.25rem 1.5rem;
+  font-size: 0.95rem;
+  color: rgba(239, 231, 216, 0.82);
+}
+
+.projects-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: var(--card-glass);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  box-shadow: 0 18px 40px -25px rgba(0, 0, 0, 0.7);
+  transition: transform 250ms ease, border-color 200ms ease;
+}
+
+.project-card:hover,
+.project-card:focus-within {
+  transform: translateY(-6px);
+  border-color: var(--teal);
+}
+
+.project-card h3 {
+  margin: 0 0 0.75rem;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 1.4rem;
+  color: var(--sand);
+}
+
+.project-card p {
+  margin: 0;
+  color: rgba(239, 231, 216, 0.8);
+  line-height: 1.6;
+}
+
 a {
   color: var(--teal);
   text-decoration: none;
@@ -108,47 +274,73 @@ a {
 }
 
 a:hover,
-a:focus {
+a:focus-visible {
+  color: var(--sand);
   text-decoration: underline;
 }
 
 footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 2.5rem 0 3rem;
+}
+
+.footer-inner {
+  display: grid;
+  gap: 1.5rem;
   text-align: center;
-  /* Increased footer padding for better touch targets */
-  padding: 24px 1.5rem;
-  border-top: 1px solid var(--teal);
 }
 
-/* Improved footer link styling and layout for mobile */
-footer p:last-of-type {
+.footer-inner p {
+  margin: 0;
+  color: rgba(239, 231, 216, 0.72);
+}
+
+.social-links {
+  list-style: none;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 0.75rem 1.25rem;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0;
+  margin: 0;
 }
 
-footer a {
-  color: var(--sand);
+.social-links li {
+  display: inline-flex;
 }
 
-/* Enhanced layout on larger screens */
 @media (min-width: 768px) {
-  .hero {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  .hero-inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: center;
-    padding: 80px 6vw 5rem;
   }
 
   .hero-content {
     text-align: left;
-    align-items: start;
+    justify-items: start;
   }
 
-  .hero-media {
-    min-height: 360px;
+  .hero-actions {
+    justify-content: flex-start;
   }
 
-  .hero-gradient {
-    background: linear-gradient(180deg, rgba(10, 20, 60, 0.7) 0%, rgba(10, 20, 60, 0) 70%);
+  .projects-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .content-section {
+    opacity: 1;
+    transform: none;
   }
 }
