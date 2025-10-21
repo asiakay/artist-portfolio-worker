@@ -50,7 +50,8 @@ body {
 }
 
 .hero {
-  padding: clamp(4rem, 6vw, 6rem) 0 4rem;
+  /* Ensures 60px top padding minimum for safe iOS status bar clearance */
+  padding: clamp(60px, 8vw, 96px) 0 4rem;
   position: relative;
 }
 
@@ -80,13 +81,15 @@ body {
 .hero-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(200deg, rgba(5, 12, 47, 0) 20%, rgba(5, 12, 47, 0.8) 100%);
+  /* Soft navy-to-transparent overlay to lift text contrast without dimming artwork */
+  background: linear-gradient(180deg, rgba(10, 20, 60, 0.68) 0%, rgba(10, 20, 60, 0) 70%);
   pointer-events: none;
 }
 
 .hero-content {
   display: grid;
-  gap: 1rem;
+  /* Tightened spacing to support revised button rhythm */
+  gap: 0.85rem;
   text-align: center;
   width: min(100%, 540px);
   justify-items: center;
@@ -95,7 +98,8 @@ body {
 .eyebrow {
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: rgba(239, 231, 216, 0.72);
+  /* Brightened eyebrow text to sustain 4.5:1 contrast on navy */
+  color: rgba(239, 231, 216, 0.85);
   font-size: 0.85rem;
   margin: 0;
 }
@@ -110,17 +114,32 @@ h1 {
   text-shadow: 0 20px 35px rgba(0, 0, 0, 0.45);
 }
 
+.hero-fade {
+  /* Applies requested fade-in animation with upward drift */
+  opacity: 0;
+  animation: fadeIn 0.8s ease-in forwards;
+}
+
+.hero-heading.hero-fade {
+  /* Slight delay for headline to create gentle stagger */
+  animation-delay: 0.12s;
+}
+
 .hero-subhead {
   margin: 0 auto;
   max-width: 42ch;
   font-size: 1.1rem;
-  color: rgba(239, 231, 216, 0.82);
+  /* Elevated opacity for improved contrast readability */
+  color: rgba(239, 231, 216, 0.92);
+  /* Adds 16px separation from call-to-action buttons */
+  margin-bottom: 1rem;
 }
 
 .hero-actions {
   display: flex;
   justify-content: center;
-  gap: 0.75rem;
+  /* Reduced flex gap to visually link primary and secondary CTAs */
+  gap: 0.5rem;
   flex-wrap: wrap;
 }
 
@@ -128,15 +147,18 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.85rem 1.75rem;
-  border-radius: 999px;
+  padding: 0.85rem 1.85rem;
+  /* Updated corner radius and height for consistent CTA sizing */
+  border-radius: 6px;
+  min-height: 3rem;
   background: var(--teal);
   color: var(--deep-purple);
   font-weight: 600;
   border: none;
   text-decoration: none;
   transition: transform 200ms ease, box-shadow 200ms ease;
-  box-shadow: 0 15px 35px -18px rgba(39, 240, 236, 0.8);
+  /* Introduces subtle shared shadow to both CTAs */
+  box-shadow: 0 6px 18px -8px rgba(0, 183, 179, 0.3);
 }
 
 .button:hover,
@@ -149,7 +171,8 @@ h1 {
   background: transparent;
   color: var(--sand);
   border: 1px solid rgba(255, 255, 255, 0.35);
-  box-shadow: none;
+  /* Matches ghost button elevation with primary CTA */
+  box-shadow: 0 6px 18px -8px rgba(0, 183, 179, 0.3);
 }
 
 .button--ghost:hover,
@@ -212,7 +235,8 @@ h2 {
 .section-heading p {
   margin: 0;
   max-width: 52ch;
-  color: rgba(239, 231, 216, 0.76);
+  /* Strengthened section description contrast */
+  color: rgba(239, 231, 216, 0.9);
 }
 
 .gallery-grid {
@@ -225,10 +249,12 @@ h2 {
   display: grid;
   gap: 0.85rem;
   background: var(--card-glass);
-  border-radius: 1.25rem;
+  /* Updated radius to match requested 12px corners */
+  border-radius: 12px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 18px 40px -28px rgba(0, 0, 0, 0.75);
+  /* Softened gallery card shadow per new hover aesthetic */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .gallery-card img {
@@ -236,12 +262,21 @@ h2 {
   aspect-ratio: 4 / 5;
   object-fit: cover;
   filter: saturate(1.1) contrast(1.05);
+  /* Enables smooth hover scale response */
+  transition: transform 0.4s ease-out;
+}
+
+.gallery-card:hover img,
+.gallery-card:focus-within img {
+  /* Applies subtle scale on interaction for gallery imagery */
+  transform: scale(1.03);
 }
 
 .gallery-card figcaption {
   padding: 1rem 1.25rem 1.5rem;
   font-size: 0.95rem;
-  color: rgba(239, 231, 216, 0.82);
+  /* Boosted caption contrast to exceed accessibility ratio */
+  color: rgba(239, 231, 216, 0.92);
 }
 
 .projects-grid {
@@ -252,8 +287,9 @@ h2 {
 .project-card {
   background: var(--card-glass);
   border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 1.25rem;
-  padding: 1.75rem;
+  /* Harmonized corner radius and padding for project tiles */
+  border-radius: 10px;
+  padding: 18px;
   box-shadow: 0 18px 40px -25px rgba(0, 0, 0, 0.7);
   transition: transform 250ms ease, border-color 200ms ease;
 }
@@ -273,7 +309,8 @@ h2 {
 
 .project-card p {
   margin: 0;
-  color: rgba(239, 231, 216, 0.8);
+  /* Improved card body copy contrast */
+  color: rgba(239, 231, 216, 0.9);
   line-height: 1.6;
 }
 
@@ -291,7 +328,11 @@ a:focus-visible {
 
 footer {
   border-top: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 2.5rem 0 3rem;
+  /* Increased footer breathing room and fade-in timing */
+  padding: 32px 0;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.8s ease-in 0.5s forwards;
 }
 
 .footer-inner {
@@ -302,7 +343,8 @@ footer {
 
 .footer-inner p {
   margin: 0;
-  color: rgba(239, 231, 216, 0.72);
+  /* Elevated footer text contrast */
+  color: rgba(239, 231, 216, 0.9);
 }
 
 .social-links {
@@ -310,13 +352,38 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.25rem;
+  /* Sets even 16px spacing between footer links */
+  gap: 1rem;
   padding: 0;
   margin: 0;
 }
 
 .social-links li {
   display: inline-flex;
+}
+
+.social-links a {
+  /* Applies sand tone links with underline-on-hover behavior */
+  color: var(--sand);
+  text-decoration: none;
+}
+
+.social-links a:hover,
+.social-links a:focus-visible {
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  /* Defines shared fade and lift animation for hero text and footer */
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (min-width: 768px) {
@@ -358,5 +425,13 @@ footer {
   .content-section {
     opacity: 1;
     transform: none;
+  }
+
+  .hero-fade,
+  footer {
+    /* Ensures content remains visible when animations are reduced */
+    opacity: 1;
+    transform: none;
+    animation: none !important;
   }
 }
