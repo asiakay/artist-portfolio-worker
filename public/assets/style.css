@@ -351,6 +351,26 @@ footer {
   color: rgba(239, 231, 216, 0.9);
 }
 
+.footer-contact {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.footer-contact .footer-name {
+  font-weight: 600;
+  color: var(--sand);
+}
+
+.footer-contact a {
+  color: var(--teal);
+}
+
+.footer-contact a:hover,
+.footer-contact a:focus-visible {
+  color: var(--sand);
+  text-decoration: underline;
+}
+
 .social-links {
   list-style: none;
   display: flex;
