@@ -221,14 +221,25 @@ h2 {
   gap: 1.75rem;
 }
 
-.gallery-card {
-  display: grid;
-  gap: 0.85rem;
-  background: var(--card-glass);
-  border-radius: 1.25rem;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 18px 40px -28px rgba(0, 0, 0, 0.75);
+.gallery-card { 
+  display: grid; 
+  gap: 0.85rem; 
+  background: var(--card-glass); 
+  border-radius: 1.25rem; 
+  overflow: hidden; 
+  border: 1px solid rgba(255, 255, 255, 0.12); 
+  box-shadow: 0 18px 40px -28px rgba(0, 0, 0, 0.75); 
+}
+
+.gallery-card--multimedia {
+  transition: transform 260ms ease, box-shadow 260ms ease;
+  will-change: transform;
+}
+
+.gallery-card--multimedia:hover,
+.gallery-card--multimedia:focus-within {
+  transform: scale(1.03);
+  box-shadow: 0 24px 52px -26px rgba(10, 20, 60, 0.75);
 }
 
 .gallery-card img {
@@ -238,10 +249,100 @@ h2 {
   filter: saturate(1.1) contrast(1.05);
 }
 
+.gallery-card--multimedia .gallery-card__media {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 26px 54px -30px rgba(10, 20, 60, 0.78);
+}
+
+.gallery-card--multimedia .gallery-card__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: unset;
+  border-radius: 0;
+}
+
+.gallery-card__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  background: #0a143ccc;
+  color: var(--sand);
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 240ms ease, transform 320ms ease;
+  pointer-events: none;
+}
+
+.gallery-card--multimedia:hover .gallery-card__overlay,
+.gallery-card--multimedia:focus-within .gallery-card__overlay {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.gallery-card__overlay-text {
+  display: grid;
+  gap: 0.5rem;
+  font-family: 'League Spartan', sans-serif;
+}
+
+.gallery-card__overlay-text h3 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.gallery-card__overlay-text p {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+
 .gallery-card figcaption {
   padding: 1rem 1.25rem 1.5rem;
   font-size: 0.95rem;
   color: rgba(239, 231, 216, 0.82);
+}
+
+.gallery-card--multimedia figcaption {
+  display: grid;
+  gap: 0.65rem;
+  font-size: 1rem;
+}
+
+.gallery-card__title {
+  margin: 0;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 1.35rem;
+  color: var(--sand);
+}
+
+.gallery-card__subtitle {
+  margin: 0;
+  color: rgba(239, 231, 216, 0.75);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.gallery-card__description {
+  margin: 0;
+  line-height: 1.65;
+  color: rgba(239, 231, 216, 0.85);
+}
+
+.gallery-card__audio {
+  margin-top: 12px;
+}
+
+.gallery-card__audio iframe {
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
 }
 
 .projects-grid {
