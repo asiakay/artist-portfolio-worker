@@ -243,6 +243,14 @@ h2 {
   color: rgba(239, 231, 216, 0.9);
 }
 
+.about-body {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 60ch;
+  color: rgba(239, 231, 216, 0.88);
+  line-height: 1.7;
+}
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
