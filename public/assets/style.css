@@ -14,6 +14,12 @@ html {
   scroll-behavior: smooth;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
@@ -38,9 +44,9 @@ body {
 }
 
 .container {
-  width: min(1080px, 100%);
+  width: min(100%, 1080px);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 clamp(1.25rem, 5vw, 2.75rem);
 }
 
 .hero {
@@ -51,6 +57,7 @@ body {
 .hero-inner {
   display: grid;
   gap: clamp(2rem, 4vw, 4rem);
+  justify-items: center;
 }
 
 .hero-media {
@@ -59,6 +66,7 @@ body {
   border-radius: 1.75rem;
   background: var(--deep-purple);
   box-shadow: var(--shadow-soft);
+  width: min(100%, 540px);
 }
 
 .hero-media img {
@@ -80,6 +88,8 @@ body {
   display: grid;
   gap: 1rem;
   text-align: center;
+  width: min(100%, 540px);
+  justify-items: center;
 }
 
 .eyebrow {
@@ -313,15 +323,21 @@ footer {
   .hero-inner {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: center;
+    justify-items: stretch;
   }
 
   .hero-content {
     text-align: left;
     justify-items: start;
+    width: 100%;
   }
 
   .hero-actions {
     justify-content: flex-start;
+  }
+
+  .hero-media {
+    width: 100%;
   }
 
   .projects-grid {
