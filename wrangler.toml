@@ -1,0 +1,6 @@
+name = "artist-portfolio"
+main = "src/worker.js"
+compatibility_date = "2025-10-20"
+
+[site]
+bucket = "./public"

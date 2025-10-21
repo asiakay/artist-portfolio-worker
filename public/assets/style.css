@@ -1,0 +1,42 @@
+:root {
+  --navy: #0A143C;
+  --teal: #00B7B3;
+  --sand: #EFE7D8;
+  --magenta: #FF1E8A;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: var(--navy);
+  color: var(--sand);
+}
+
+header {
+  text-align: center;
+  padding: 5rem 1rem;
+}
+
+h1 {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 700;
+  color: var(--magenta);
+}
+
+h2 {
+  font-family: 'League Spartan', sans-serif;
+  color: var(--teal);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid var(--teal);
+}
