@@ -1,42 +1,445 @@
 :root {
-  --navy: #0A143C;
-  --teal: #00B7B3;
-  --sand: #EFE7D8;
-  --magenta: #FF1E8A;
+  --navy: #050c2f;
+  --navy-soft: rgba(12, 19, 55, 0.8);
+  --teal: #27f0ec;
+  --sand: #efe7d8;
+  --magenta: #ff3c9a;
+  --deep-purple: #1b1640;
+  --card-glass: rgba(255, 255, 255, 0.08);
+  --card-border: rgba(255, 255, 255, 0.14);
+  --shadow-soft: 0 30px 60px -30px rgba(0, 0, 0, 0.65);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
-  background: var(--navy);
+  background: radial-gradient(circle at 20% 20%, rgba(39, 240, 236, 0.12), transparent 45%),
+    radial-gradient(circle at 80% 10%, rgba(255, 60, 154, 0.1), transparent 50%),
+    var(--navy);
   color: var(--sand);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
 }
 
-header {
+.background-texture {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(140deg, rgba(12, 19, 55, 0.8), rgba(5, 12, 47, 0.9)),
+    url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"%3E%3Cpath fill="%23ffffff" fill-opacity="0.05" d="M0 0h20v20H0zM40 40h20v20H40zM80 0h20v20H80zM120 40h20v20h-20z"/%3E%3C/svg%3E');
+  mix-blend-mode: screen;
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: -2;
+}
+
+.container {
+  width: min(100%, 1080px);
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 2.75rem);
+}
+
+.hero {
+  /* Ensures 60px top padding minimum for safe iOS status bar clearance */
+  padding: clamp(60px, 8vw, 96px) 0 4rem;
+  position: relative;
+}
+
+.hero-inner {
+  display: grid;
+  gap: clamp(2rem, 4vw, 4rem);
+  justify-items: center;
+  /* Recenters the hero stack so it sits in the middle rather than hugging the left edge */
+  justify-content: center;
+}
+
+.hero-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.75rem;
+  background: var(--deep-purple);
+  box-shadow: var(--shadow-soft);
+  /* Narrows the hero artwork to prevent stretched columns on large screens */
+  width: min(100%, 520px);
+}
+
+.hero-media img {
+  width: 100%;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.15);
+}
+
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  /* Soft navy-to-transparent overlay to lift text contrast without dimming artwork */
+  background: linear-gradient(180deg, rgba(10, 20, 60, 0.68) 0%, rgba(10, 20, 60, 0) 70%);
+  pointer-events: none;
+}
+
+.hero-content {
+  display: grid;
+  /* Tightened spacing to support revised button rhythm */
+  gap: 0.85rem;
   text-align: center;
-  padding: 5rem 1rem;
+  /* Matches hero copy width with media to aid centered layout */
+  width: min(100%, 520px);
+  justify-items: center;
+}
+
+.eyebrow {
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  /* Brightened eyebrow text to sustain 4.5:1 contrast on navy */
+  color: rgba(239, 231, 216, 0.85);
+  font-size: 0.85rem;
+  margin: 0;
 }
 
 h1 {
   font-family: 'League Spartan', sans-serif;
   font-weight: 700;
-  color: var(--magenta);
+  font-size: clamp(2.25rem, 6vw, 3.75rem);
+  line-height: 1.05;
+  margin: 0;
+  color: var(--sand);
+  text-shadow: 0 20px 35px rgba(0, 0, 0, 0.45);
+}
+
+.hero-fade {
+  /* Applies requested fade-in animation with upward drift */
+  opacity: 0;
+  animation: fadeIn 0.8s ease-in forwards;
+}
+
+.hero-heading.hero-fade {
+  /* Slight delay for headline to create gentle stagger */
+  animation-delay: 0.12s;
+}
+
+.hero-subhead {
+  margin: 0 auto;
+  max-width: 42ch;
+  font-size: 1.1rem;
+  /* Elevated opacity for improved contrast readability */
+  color: rgba(239, 231, 216, 0.92);
+  /* Adds 16px separation from call-to-action buttons */
+  margin-bottom: 1rem;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  /* Reduced flex gap to visually link primary and secondary CTAs */
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.85rem;
+  /* Updated corner radius and height for consistent CTA sizing */
+  border-radius: 6px;
+  min-height: 3rem;
+  background: var(--teal);
+  color: var(--deep-purple);
+  font-weight: 600;
+  border: none;
+  text-decoration: none;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+  /* Introduces subtle shared shadow to both CTAs */
+  box-shadow: 0 6px 18px -8px rgba(0, 183, 179, 0.3);
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 40px -18px rgba(39, 240, 236, 0.85);
+}
+
+.button--ghost {
+  background: transparent;
+  color: var(--sand);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  /* Matches ghost button elevation with primary CTA */
+  box-shadow: 0 6px 18px -8px rgba(0, 183, 179, 0.3);
+}
+
+.button--ghost:hover,
+.button--ghost:focus-visible {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+main {
+  display: grid;
+  gap: clamp(3.5rem, 6vw, 5rem);
+  padding-bottom: clamp(3rem, 8vw, 5rem);
+}
+
+.content-section {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 600ms ease, transform 600ms ease;
+  position: relative;
+}
+
+.content-section::before {
+  content: '';
+  position: absolute;
+  inset: 12% -20% -15% -20%;
+  background: radial-gradient(circle at top left, rgba(39, 240, 236, 0.12), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(255, 60, 154, 0.12), transparent 65%);
+  opacity: 0.65;
+  z-index: -1;
+  filter: blur(60px);
+}
+
+.content-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-inner {
+  background: linear-gradient(160deg, rgba(27, 22, 64, 0.88), rgba(5, 12, 47, 0.9));
+  border: 1px solid var(--card-border);
+  border-radius: 1.5rem;
+  padding: clamp(2.5rem, 5vw, 3.5rem);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(18px);
+}
+
+.section-heading {
+  display: grid;
+  gap: 0.65rem;
+  margin-bottom: clamp(2rem, 4vw, 2.75rem);
 }
 
 h2 {
   font-family: 'League Spartan', sans-serif;
+  font-size: clamp(1.9rem, 4vw, 2.5rem);
   color: var(--teal);
+  margin: 0;
 }
 
-.grid {
+.section-heading p {
+  margin: 0;
+  max-width: 52ch;
+  /* Strengthened section description contrast */
+  color: rgba(239, 231, 216, 0.9);
+}
+
+.gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.75rem;
+}
+
+.gallery-card {
+  display: grid;
+  gap: 0.85rem;
+  background: var(--card-glass);
+  /* Updated radius to match requested 12px corners */
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  /* Softened gallery card shadow per new hover aesthetic */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-card img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  filter: saturate(1.1) contrast(1.05);
+  /* Enables smooth hover scale response */
+  transition: transform 0.4s ease-out;
+}
+
+.gallery-card:hover img,
+.gallery-card:focus-within img {
+  /* Applies subtle scale on interaction for gallery imagery */
+  transform: scale(1.03);
+}
+
+.gallery-card figcaption {
+  padding: 1rem 1.25rem 1.5rem;
+  font-size: 0.95rem;
+  /* Boosted caption contrast to exceed accessibility ratio */
+  color: rgba(239, 231, 216, 0.92);
+}
+
+.projects-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: var(--card-glass);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  /* Harmonized corner radius and padding for project tiles */
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 18px 40px -25px rgba(0, 0, 0, 0.7);
+  transition: transform 250ms ease, border-color 200ms ease;
+}
+
+.project-card:hover,
+.project-card:focus-within {
+  transform: translateY(-6px);
+  border-color: var(--teal);
+}
+
+.project-card h3 {
+  margin: 0 0 0.75rem;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 1.4rem;
+  color: var(--sand);
+}
+
+.project-card p {
+  margin: 0;
+  /* Improved card body copy contrast */
+  color: rgba(239, 231, 216, 0.9);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--teal);
+  text-decoration: none;
+  transition: color 200ms ease, text-decoration-color 200ms ease;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--sand);
+  text-decoration: underline;
 }
 
 footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  /* Increased footer breathing room and fade-in timing */
+  padding: 32px 0;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.8s ease-in 0.5s forwards;
+}
+
+.footer-inner {
+  display: grid;
+  gap: 1.5rem;
   text-align: center;
-  padding: 2rem;
-  border-top: 1px solid var(--teal);
+}
+
+.footer-inner p {
+  margin: 0;
+  /* Elevated footer text contrast */
+  color: rgba(239, 231, 216, 0.9);
+}
+
+.social-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Sets even 16px spacing between footer links */
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.social-links li {
+  display: inline-flex;
+}
+
+.social-links a {
+  /* Applies sand tone links with underline-on-hover behavior */
+  color: var(--sand);
+  text-decoration: none;
+}
+
+.social-links a:hover,
+.social-links a:focus-visible {
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  /* Defines shared fade and lift animation for hero text and footer */
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-inner {
+    /* Uses auto-width tracks so the hero stack centers within available space */
+    grid-template-columns: repeat(2, minmax(0, max-content));
+    align-items: center;
+    justify-content: center;
+    column-gap: clamp(2rem, 6vw, 5rem);
+  }
+
+  .hero-content {
+    /* Keeps hero copy centered to avoid empty space on the right */
+    text-align: center;
+    justify-items: center;
+    width: auto;
+  }
+
+  .hero-actions {
+    /* Aligns CTAs beneath centered copy on wider screens */
+    justify-content: center;
+  }
+
+  .hero-media {
+    width: auto;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .content-section {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-fade,
+  footer {
+    /* Ensures content remains visible when animations are reduced */
+    opacity: 1;
+    transform: none;
+    animation: none !important;
+  }
 }

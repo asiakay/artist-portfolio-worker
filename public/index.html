@@ -3,39 +3,102 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Added descriptive meta tag for improved SEO and accessibility -->
+  <meta
+    name="description"
+    content="Portfolio of Asia Lakay Grady — artist and creative technologist creating systems at the intersection of art, technology, and social impact."
+  />
   <title>Asia Lakay Grady | Artist Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;600;700&family=Montserrat:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
-  <header>
-    <h1>Optimizing digital interactions for clarity and engagement</h1>
+  <div class="background-texture" aria-hidden="true"></div>
+
+  <header class="hero">
+    <div class="hero-inner container">
+      <div class="hero-media">
+        <img src="assets/images/sample1.jpg" alt="Asia Lakay Grady art installation" />
+        <div class="hero-gradient" aria-hidden="true"></div>
+      </div>
+      <div class="hero-content">
+        <!-- Added fade-in class to hero eyebrow for soft entrance animation -->
+        <p class="eyebrow hero-fade">Asia Lakay Grady</p>
+        <!-- Added fade-in class to hero headline for synchronized animation -->
+        <h1 class="hero-heading hero-fade">Optimizing digital interactions for clarity and engagement</h1>
+        <!-- Subtitle retains new spacing before the call-to-action buttons -->
+        <p class="hero-subhead">Artist &amp; Creative Technologist crafting systems of care.</p>
+        <div class="hero-actions">
+          <a class="button" href="#gallery">View Gallery</a>
+          <a class="button button--ghost" href="#projects">Explore Projects</a>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <section id="gallery">
-    <h2>Gallery</h2>
-    <div class="grid">
-      <img src="assets/images/sample1.jpg" alt="Project 1" />
-      <img src="assets/images/sample2.jpg" alt="Project 2" />
-    </div>
-  </section>
+  <main>
+    <section id="gallery" class="content-section">
+      <div class="container section-inner">
+        <div class="section-heading">
+          <h2>Gallery</h2>
+          <p>Curated glimpses into installations, performances, and prototypes.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-card">
+            <img src="assets/images/sample1.jpg" alt="Immersive projection mapping installation" />
+            <figcaption>Immersive projection mapping installation exploring movement as data.</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="assets/images/sample1.jpg" alt="Community mural concept" />
+            <figcaption>Community mural concept developed with youth organizers and mutual aid networks.</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="assets/images/sample1.jpg" alt="Speculative interface" />
+            <figcaption>Speculative interface prototype for more joyful civic participation.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <ul>
-      <li><strong>Solar Roots Co-op:</strong> Community-powered renewable energy and food resilience.</li>
-      <li><strong>Bridge Action Network:</strong> Media, policy, and tech organizing for justice.</li>
-      <li><strong>Shadow Spells for Resistance:</strong> Art, ritual, and strategy fused.</li>
-    </ul>
-  </section>
+    <section id="projects" class="content-section">
+      <div class="container section-inner">
+        <div class="section-heading">
+          <h2>Projects</h2>
+          <p>Collaborations rooted in community technology, ritual, and resilience.</p>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card">
+            <h3>Solar Roots Co-op</h3>
+            <p>Community-powered renewable energy network pairing microgrids with food sovereignty.</p>
+          </article>
+          <article class="project-card">
+            <h3>Bridge Action Network</h3>
+            <p>Media, policy, and tech organizing for justice with live dashboards and mutual aid mapping.</p>
+          </article>
+          <article class="project-card">
+            <h3>Shadow Spells for Resistance</h3>
+            <p>Art, ritual, and strategy fused into participatory performances and liberatory toolkits.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <p>© 2025 Asia Lakay Grady</p>
-    <p>
-      <a href="https://instagram.com/asialakay">Instagram</a> |
-      <a href="https://youtube.com/@AK2">YouTube</a> |
-      <a href="https://bridgeactionnetwork.substack.com">Substack</a> |
-      <a href="https://github.com/AsiaLakay">GitHub</a>
-    </p>
+    <div class="container footer-inner">
+      <p>© 2025 Asia Lakay Grady</p>
+      <ul class="social-links">
+        <li><a href="https://instagram.com/asialakay">Instagram</a></li>
+        <li><a href="https://youtube.com/@AK2">YouTube</a></li>
+        <li><a href="https://bridgeactionnetwork.substack.com">Substack</a></li>
+        <li><a href="https://github.com/AsiaLakay">GitHub</a></li>
+      </ul>
+    </div>
   </footer>
 
   <script src="assets/script.js"></script>
