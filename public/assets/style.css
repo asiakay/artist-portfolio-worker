@@ -50,9 +50,11 @@ body {
 }
 
 .hero {
+  text-align: center;
   /* Ensures 60px top padding minimum for safe iOS status bar clearance */
-  padding: clamp(60px, 8vw, 96px) 0 4rem;
+  padding: clamp(60px, 8vw, 96px) 0 clamp(3rem, 6vw, 3.75rem);
   position: relative;
+  background: linear-gradient(to bottom, rgba(10, 20, 60, 0.8), transparent);
 }
 
 .hero-inner {
@@ -124,19 +126,26 @@ h1 {
   animation: fadeIn 0.8s ease-in forwards;
 }
 
-.hero-heading.hero-fade {
-  /* Slight delay for headline to create gentle stagger */
+.hero h1 {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 700;
+  color: var(--magenta);
+  font-size: clamp(2.4rem, 6.5vw, 2.8rem);
+  margin-bottom: 10px;
+  animation: fadeIn 0.8s ease-in forwards;
   animation-delay: 0.12s;
 }
 
-.hero-subhead {
-  margin: 0 auto;
+.tagline {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--sand);
+  font-size: clamp(1.15rem, 2vw, 1.3rem);
+  letter-spacing: 1px;
+  opacity: 0;
+  animation: fadeIn 1.2s ease-in forwards;
+  animation-delay: 0.4s;
+  margin: 0 auto 1rem;
   max-width: 42ch;
-  font-size: 1.1rem;
-  /* Elevated opacity for improved contrast readability */
-  color: rgba(239, 231, 216, 0.92);
-  /* Adds 16px separation from call-to-action buttons */
-  margin-bottom: 1rem;
 }
 
 .hero-actions {
