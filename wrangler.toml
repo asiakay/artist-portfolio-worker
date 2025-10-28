@@ -1,4 +1,4 @@
-name = "artist-portfolio"
+name = "artist-portfolio-worker"
 main = "src/worker.js"
 compatibility_date = "2025-10-20"
 
