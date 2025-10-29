@@ -1,23 +1,27 @@
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('Artist portfolio loaded.');
-
-  // Added fade-in intersection observer to animate sections on scroll
-  const revealSections = document.querySelectorAll('section');
-
-  const reveal = (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
+document.addEventListener("DOMContentLoaded", () => {
+  // Smooth scroll for internal links
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (event) => {
+      event.preventDefault();
+      const target = document.querySelector(anchor.getAttribute("href"));
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
       }
     });
-  };
-
-  const observer = new IntersectionObserver(reveal, {
-    threshold: 0.2,
   });
 
-  revealSections.forEach((section) => {
-    observer.observe(section);
-  });
+  // Fade in articles as they appear
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll("article").forEach((element) => observer.observe(element));
 });

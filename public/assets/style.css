@@ -1,154 +1,112 @@
 :root {
-  --navy: #0A143C;
-  /* Brightened turquoise to improve link visibility */
-  --teal: #00D2CF;
-  --sand: #EFE7D8;
-  --magenta: #FF1E8A;
+  --navy: #0a143c;
+  --teal: #00b7b3;
+  --sand: #efe7d8;
+  --magenta: #ff1e8a;
+  --white: #ffffff;
+  --transition: 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
+  font-family: "Inter", system-ui, sans-serif;
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: var(--navy);
-  color: var(--sand);
+  background-color: var(--sand);
+  color: var(--navy);
+  line-height: 1.6;
 }
 
-/* Enabled smooth scrolling for better in-page navigation */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Added hero layout improvements for mobile spacing and hierarchy */
-.hero {
-  display: grid;
-  gap: 2rem;
-  padding: 60px 1.5rem 4rem;
-}
-
-/* Ensured hero content remains legible across breakpoints */
-.hero-content {
+header {
   text-align: center;
-  display: grid;
-  gap: 1rem;
-}
-
-/* Added styling for the new hero subhead */
-.hero-subhead {
-  margin: 0 auto;
-  max-width: 28ch;
-  font-size: 1.2rem;
-  letter-spacing: 0.08em;
-  color: var(--sand);
-  text-transform: uppercase;
-}
-
-/* Introduced responsive hero media container with gradient overlay */
-.hero-media {
-  position: relative;
-  overflow: hidden;
-  border-radius: 1.5rem;
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.hero-media img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
-}
-
-/* Applied navy-to-transparent gradient overlay */
-.hero-gradient {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(10, 20, 60, 0.85) 0%, rgba(10, 20, 60, 0) 60%);
-  pointer-events: none;
+  background: var(--navy);
+  color: var(--white);
+  padding: 3rem 1rem;
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 h1 {
-  font-family: 'League Spartan', sans-serif;
-  font-weight: 700;
-  color: var(--magenta);
-}
-
-h2 {
-  font-family: 'League Spartan', sans-serif;
-  color: var(--teal);
-}
-
-.hero-content h1 {
+  font-size: 2rem;
   margin-bottom: 0.5rem;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
-/* Added fade-in animation base state for sections */
-section {
+h2 {
+  color: var(--magenta);
+  border-bottom: 2px solid var(--teal);
+  display: inline-block;
+  padding-bottom: 0.25rem;
+}
+
+article {
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  transition: transform var(--transition), box-shadow var(--transition), opacity 0.6s ease;
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 600ms ease, transform 600ms ease;
+  transform: translateY(16px);
 }
 
-/* Reveals sections when they enter the viewport */
-section.is-visible {
+article.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Updated link styles for brighter color and accessible hover state */
+article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
 a {
   color: var(--teal);
   text-decoration: none;
-  transition: color 200ms ease, text-decoration-color 200ms ease;
+  font-weight: 600;
 }
 
 a:hover,
 a:focus {
+  color: var(--magenta);
   text-decoration: underline;
 }
 
 footer {
   text-align: center;
-  /* Increased footer padding for better touch targets */
-  padding: 24px 1.5rem;
-  border-top: 1px solid var(--teal);
+  background: var(--navy);
+  color: var(--white);
+  padding: 1rem;
+  font-size: 0.9rem;
 }
 
-/* Improved footer link styling and layout for mobile */
-footer p:last-of-type {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.75rem 1.25rem;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-footer a {
-  color: var(--sand);
-}
-
-/* Enhanced layout on larger screens */
-@media (min-width: 768px) {
-  .hero {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    align-items: center;
-    padding: 80px 6vw 5rem;
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.6rem;
   }
 
-  .hero-content {
-    text-align: left;
-    align-items: start;
+  main {
+    padding: 0 1rem;
   }
 
-  .hero-media {
-    min-height: 360px;
-  }
-
-  .hero-gradient {
-    background: linear-gradient(180deg, rgba(10, 20, 60, 0.7) 0%, rgba(10, 20, 60, 0) 70%);
+  article {
+    padding: 1rem;
   }
 }

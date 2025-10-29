@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Deeds Project – a transparent, human-centered platform to log, verify, and celebrate community deeds."
+    />
+    <title>Deeds Project | Community Impact Front End</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/deeds.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="container header-inner">
+          <a class="brand" href="#top" aria-label="Deeds project home">
+            <span aria-hidden="true">✶</span>
+            <span class="brand-text">Deeds Project</span>
+          </a>
+          <nav class="primary-nav" aria-label="Primary">
+            <a href="#overview">Overview</a>
+            <a href="#workflow">How it works</a>
+            <a href="#impact">Impact</a>
+            <a href="#contact">Contact</a>
+          </nav>
+          <a class="button button--ghost" href="#cta">Log a deed</a>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="hero" id="overview">
+          <div class="container hero-inner">
+            <div class="hero-copy">
+              <p class="hero-eyebrow">Transparent civic recordkeeping</p>
+              <h1>Trustworthy infrastructure for community deeds</h1>
+              <p class="hero-text">
+                The Deeds Project is a lightweight front end tailored for Cloudflare Workers. It gives residents,
+                organizers, and institutions a shared place to submit, verify, and review civic deeds in real time.
+              </p>
+              <div class="hero-actions">
+                <a class="button" href="#impact">View live registry</a>
+                <a class="button button--ghost" href="#workflow">See how it works</a>
+              </div>
+            </div>
+            <div class="hero-pane" role="presentation">
+              <div class="hero-stats">
+                <p class="stat-label">Verified deeds</p>
+                <p class="stat-value">4,218</p>
+                <p class="stat-footnote">updated 12 minutes ago</p>
+              </div>
+              <ul class="status-feed" aria-label="Recent deeds">
+                <li>
+                  <span class="status-dot status-dot--verified" aria-hidden="true"></span>
+                  <span><strong>Neighborhood solar install</strong> verified by Stewardship Guild</span>
+                  <time datetime="2025-04-08T17:32:00Z">5 minutes ago</time>
+                </li>
+                <li>
+                  <span class="status-dot status-dot--pending" aria-hidden="true"></span>
+                  <span><strong>Fresh produce distribution</strong> awaiting partner review</span>
+                  <time datetime="2025-04-08T16:58:00Z">39 minutes ago</time>
+                </li>
+                <li>
+                  <span class="status-dot status-dot--verified" aria-hidden="true"></span>
+                  <span><strong>Safe passage escort</strong> verified by Youth Transit Coalition</span>
+                  <time datetime="2025-04-08T15:20:00Z">2 hours ago</time>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section--cards" aria-labelledby="section-mission">
+          <div class="container">
+            <div class="section-heading">
+              <h2 id="section-mission">What the front end delivers</h2>
+              <p>
+                Built for serverless deployment on Cloudflare Workers, this interface balances warmth with clarity so
+                communities can focus on accountability, not tooling.
+              </p>
+            </div>
+            <div class="card-grid">
+              <article class="card">
+                <h3>Submission workspace</h3>
+                <p>Responsive form patterns for deeds, supporting attachments, location context, and partner tagging.</p>
+              </article>
+              <article class="card">
+                <h3>Verification dashboard</h3>
+                <p>Role-based review queues with filters, inline status updates, and audit history for every action.</p>
+              </article>
+              <article class="card">
+                <h3>Public ledger</h3>
+                <p>SEO-friendly, searchable listing so supporters can browse impact by neighborhood, theme, or partner.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section--workflow" id="workflow" aria-labelledby="section-workflow">
+          <div class="container">
+            <div class="section-heading">
+              <h2 id="section-workflow">Workflow at a glance</h2>
+              <p>Each stage is modular, allowing integrations with KV, D1, Supabase, or other Cloudflare services.</p>
+            </div>
+            <ol class="workflow-list">
+              <li>
+                <span class="workflow-step">1</span>
+                <div>
+                  <h3>Submit a deed</h3>
+                  <p>Residents log an action with supporting media. Form validation runs at the edge to keep inputs clean.</p>
+                </div>
+              </li>
+              <li>
+                <span class="workflow-step">2</span>
+                <div>
+                  <h3>Partner review</h3>
+                  <p>Stewards receive notifications, leave notes, and confirm details before the deed is published.</p>
+                </div>
+              </li>
+              <li>
+                <span class="workflow-step">3</span>
+                <div>
+                  <h3>Public ledger</h3>
+                  <p>Verified deeds appear instantly for the community with filters and open data exports.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="section section--split" id="impact" aria-labelledby="section-impact">
+          <div class="container split">
+            <div class="split-media" role="presentation">
+              <div class="impact-card">
+                <p class="impact-heading">Current snapshot</p>
+                <dl>
+                  <div class="impact-row">
+                    <dt>Verified hours contributed</dt>
+                    <dd>18,640</dd>
+                  </div>
+                  <div class="impact-row">
+                    <dt>Communities served</dt>
+                    <dd>27</dd>
+                  </div>
+                  <div class="impact-row">
+                    <dt>Mutual aid funds moved</dt>
+                    <dd>$482K</dd>
+                  </div>
+                </dl>
+                <p class="impact-footnote">Data sourced from Worker bindings and refreshed every 60 seconds.</p>
+              </div>
+            </div>
+            <div class="split-body">
+              <h2 id="section-impact">Impact storytelling baked in</h2>
+              <p>
+                A curated ledger view highlights progress through metrics, heat maps, and narrative highlights. The design
+                language echoes community posters: bright color blocks, bold typography, and rounded edges.
+              </p>
+              <ul class="feature-list">
+                <li><strong>Performance first:</strong> static assets served from Cloudflare’s edge for instant loads.</li>
+                <li><strong>Accessible:</strong> WCAG AA contrast, keyboard-friendly navigation, and semantic markup.</li>
+                <li><strong>Customizable:</strong> swap palettes, copy, or data bindings without touching the backend.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section--ledger" aria-labelledby="section-ledger">
+          <div class="container">
+            <div class="section-heading">
+              <h2 id="section-ledger">Sample ledger entries</h2>
+              <p>Preview how the registry renders verified and pending deeds for transparency.</p>
+            </div>
+            <div class="ledger-grid" role="table" aria-label="Sample deeds table">
+              <div class="ledger-row ledger-row--head" role="row">
+                <span role="columnheader">Deed</span>
+                <span role="columnheader">Status</span>
+                <span role="columnheader">Neighborhood</span>
+                <span role="columnheader">Tags</span>
+              </div>
+              <div class="ledger-row" role="row">
+                <span role="cell">Greensward community compost activation</span>
+                <span role="cell" class="badge badge--verified">Verified</span>
+                <span role="cell">South Ridge</span>
+                <span role="cell">Climate · Foodways</span>
+              </div>
+              <div class="ledger-row" role="row">
+                <span role="cell">Mutual aid pop-up for flood response</span>
+                <span role="cell" class="badge badge--pending">Pending</span>
+                <span role="cell">Riverfront</span>
+                <span role="cell">Relief · Housing</span>
+              </div>
+              <div class="ledger-row" role="row">
+                <span role="cell">Free transit cards for youth apprentices</span>
+                <span role="cell" class="badge badge--verified">Verified</span>
+                <span role="cell">Midtown</span>
+                <span role="cell">Mobility · Youth</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section--faq" aria-labelledby="section-faq">
+          <div class="container">
+            <div class="section-heading">
+              <h2 id="section-faq">Frequently asked questions</h2>
+              <p>Use these copy blocks as a starting point for your deployment documentation.</p>
+            </div>
+            <div class="faq-grid">
+              <details>
+                <summary>Can this deploy directly to our Cloudflare network?</summary>
+                <p>
+                  Yes. Place this folder in your `public/` assets directory. The Worker automatically serves `/deeds/` via
+                  the asset binding configured in <code>wrangler.toml</code>.
+                </p>
+              </details>
+              <details>
+                <summary>Where do deed submissions go?</summary>
+                <p>
+                  Connect the front-end form to a Worker route or Durable Object. You can stream payloads to KV, D1, or
+                  external APIs without leaving Cloudflare’s edge.
+                </p>
+              </details>
+              <details>
+                <summary>How do we style it for our collective?</summary>
+                <p>
+                  Update the color CSS variables in <code>assets/deeds.css</code> and replace copy in the HTML. Components are
+                  built with modern, semantic HTML so theming is straightforward.
+                </p>
+              </details>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section--cta" id="cta" aria-labelledby="section-cta">
+          <div class="container cta-card">
+            <h2 id="section-cta">Ready to log your first deed?</h2>
+            <p>
+              Hook this interface up to your Cloudflare Worker endpoint to start receiving community submissions within
+              minutes.
+            </p>
+            <div class="cta-actions">
+              <a class="button" href="mailto:deeds@communitylab.org">Book a walkthrough</a>
+              <a class="button button--ghost" href="#overview">Return to overview</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer" id="contact">
+        <div class="container footer-inner">
+          <div>
+            <p class="footer-heading">Stay connected</p>
+            <p>Questions about integration or customization? Email <a href="mailto:deeds@communitylab.org">deeds@communitylab.org</a>.</p>
+          </div>
+          <div class="footer-links">
+            <a href="https://communitylab.example" rel="noopener">Community Lab</a>
+            <a href="https://workers.cloudflare.com/">Powered by Cloudflare Workers</a>
+            <a href="/">Back to portfolio</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
